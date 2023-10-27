@@ -45,6 +45,25 @@ public class ShoppingTable {
         return cartPK;
     }
     
+        public static int findLastCART() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineWebServicePU");
+        EntityManager em = emf.createEntityManager();
+        List<Shoppingcart> cartList = null;
+        int cartId = 0;
+        try {
+            cartList = (List<Shoppingcart>) em.createNamedQuery("Shoppingcart.findAll").getResultList();
+            Shoppingcart lastCart = cartList.get(cartList.size() - 1);
+            cartId = lastCart.getShoppingcartPK().getCartId();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            em.close();
+            emf.close();
+        }
+        return cartId;
+    }
+    
     public static List<Shoppingcart> detailOrder(int id) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineWebServicePU");
         EntityManager em = emf.createEntityManager();

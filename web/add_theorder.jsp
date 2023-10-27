@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Products to Cart</title>
+    <title>ADD DVD MOVIE TO YOUR CART</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -96,15 +96,15 @@
         </thead>
         <tbody>
             <% List<Products> productsList = ProductsTable.findAllProducts(); %>
-            <% for (Products product : productsList) { %>
+            <% for (Products pro : productsList) { %>
                 <tr>
-                    <td><input type="checkbox" name="movies" value="<%= product.getId() %>"/> 
-                        <%= product.getMovie() %>
+                    <td><input type="checkbox" name="movies" value="<%= pro.getId() %>"/> 
+                        <%= pro.getMovie() %>
                     </td>
-                    <td><%= product.getRating() %></td>
-                    <td><%= product.getYearcreate() %></td>
-                    <td><%= product.getPrice() %></td>
-                    <td><input type="number" name="quantity<%= product.getId() %>" style="width: 100%;"</td>
+                    <td><%= pro.getRating() %></td>
+                    <td><%= pro.getYearcreate() %></td>
+                    <td><%= pro.getPrice() %></td>
+                    <td><input type="number" name="quantity<%= pro.getId() %>" style="width: 100%;"</td>
                 </tr>
             <% } %>
         </tbody>

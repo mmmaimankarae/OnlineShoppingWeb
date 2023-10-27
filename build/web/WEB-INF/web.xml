@@ -16,6 +16,14 @@
         <servlet-name>ConfirmTheOrderController</servlet-name>
         <servlet-class>controller.ConfirmTheOrderController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>java</servlet-name>
+        <servlet-class>RemoveSession.java</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveSessionController</servlet-name>
+        <servlet-class>controller.RemoveSessionController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddCartController</servlet-name>
         <url-pattern>/AddCartController</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>ConfirmTheOrderController</servlet-name>
         <url-pattern>/ConfirmTheOrderController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>java</servlet-name>
+        <url-pattern>/java</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveSessionController</servlet-name>
+        <url-pattern>/RemoveSessionController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

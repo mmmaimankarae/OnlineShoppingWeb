@@ -116,9 +116,6 @@
         </h1>
         <form action="ConfirmTheOrderController" method="POST">
         <table border="1">
-            <%
-            for (Products product : selectedProducts) {
-            %>
             <tr>
                 <th>DVD Names</th>
                 <th>Rating</th>
@@ -127,22 +124,25 @@
                 <th>Quantity</th>
                 <th>Price</th>
             </tr>
+            <%
+            for (Products pro : selectedProducts) {
+            %>
             <tr>
-                <td><%= product.getMovie() %></td>
-                <td><%= product.getRating() %></td>
-                <td><%= product.getRating() %></td>
-                <td><%= product.getPrice() %></td>
+                <td><%= pro.getMovie() %></td>
+                <td><%= pro.getRating() %></td>
+                <td><%= pro.getRating() %></td>
+                <td><%= pro.getPrice() %></td>
     <%
-                int productId = product.getId();
+                int productId = pro.getId();
                 int qty = Integer.parseInt(request.getParameter("quantity" + productId));
-                int price = product.getPrice();
+                int price = pro.getPrice();
                 int sum = cal.sumOfMovie(qty, price);
                     totalPrice += sum;
                     out.println("<td> "+ qty + "</td>");
                     out.println("<td> "+ sum + "</td>");
                     %>
                 <input type="hidden" name="productId" value="<%= productId %>">
-                <input type="hidden" name="quantity<%= product.getId() %>" value="<%= qty %>">
+                <input type="hidden" name="quantity<%= pro.getId() %>" value="<%= qty %>">
                 <%
             }
         }
