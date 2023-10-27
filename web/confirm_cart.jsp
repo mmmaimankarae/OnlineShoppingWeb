@@ -114,6 +114,7 @@
         <center>
         <h1>YOUR ORDER CART
         </h1>
+        <form action="ConfirmTheOrderController" method="POST">
         <table border="1">
             <%
             for (Products product : selectedProducts) {
@@ -139,6 +140,10 @@
                     totalPrice += sum;
                     out.println("<td> "+ qty + "</td>");
                     out.println("<td> "+ sum + "</td>");
+                    %>
+                <input type="hidden" name="productId" value="<%= productId %>">
+                <input type="hidden" name="quantity<%= product.getId() %>" value="<%= qty %>">
+                <%
             }
         }
     %>
@@ -149,7 +154,6 @@
                 </tr>
             </tr>
         </table>
-        <form action="ConfirmTheOrderController" method="POST">
             <button type="submit" class="checkout-button">Check out</button>
             <a href="add_theorder.jsp" class = "select-more-button" >Select More Order</a>
         </form>

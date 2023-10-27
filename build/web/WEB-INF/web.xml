@@ -9,7 +9,11 @@
         <servlet-class>controller.ShowOrderServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CofirmTheOrderController</servlet-name>
+        <servlet-name>ConfirmTheOrder</servlet-name>
+        <servlet-class>controller.ConfirmTheOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmTheOrderController</servlet-name>
         <servlet-class>controller.ConfirmTheOrderController</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -21,8 +25,12 @@
         <url-pattern>/ShowOrderServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CofirmTheOrderController</servlet-name>
-        <url-pattern>/CofirmTheOrderController</url-pattern>
+        <servlet-name>ConfirmTheOrder</servlet-name>
+        <url-pattern>/ConfirmTheOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmTheOrderController</servlet-name>
+        <url-pattern>/ConfirmTheOrderController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -80,6 +80,9 @@
     </style>
 </head>
 <body>
+    <center>
+    <h1>DVD Catalogs</h1>
+    </center>
     <form name="addOrderCART" action="AddCartController" method="POST" onsubmit="return validateForm();">
     <table>
         <thead>

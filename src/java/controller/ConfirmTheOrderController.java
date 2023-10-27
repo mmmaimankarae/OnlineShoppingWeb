@@ -17,29 +17,26 @@ public class ConfirmTheOrderController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
-        String[] productsId = request.getParameterValues("productId");
-        
+        String[] productIds = request.getParameterValues("productId");
         List<Shoppingcart> shoppingcartList = ShoppingTable.findAllCART();
         int cartId;
         if (shoppingcartList.isEmpty()) {
             cartId = 1;
         }else {
-            Shoppingcart lastProduct = shoppingcartList.get(shoppingcartList.size() - 1);
-            cartId = lastProduct.getShoppingcartPK().getCartId()+1;
+                Shoppingcart lastProduct = shoppingcartList.get(shoppingcartList.size() - 1);
+                cartId = lastProduct.getShoppingcartPK().getCartId()+1;
         }
-        
-        for (int i = 0; i < productsId.length; i++) {
-            for (String productId : productsId) {
-                int quantity = Integer.parseInt(request.getParameter("quantity" + productId));
-                int Id =Integer.parseInt(productId);
-                Products products = ProductsTable.findProductByMovieId(Id);
-                Shoppingcart cart = new Shoppingcart();
-                ShoppingcartPK cartPK = new ShoppingcartPK(cartId, Id);
-                cart.setShoppingcartPK(cartPK);
-                cart.setQuantity(quantity);
-                cart.setProducts(products);
-                ShoppingTable.insertOrder(cart);
+        for (int i = 0; i < productIds.length; i++) {
+            for (String productId : productIds) {
+                    int quantity = Integer.parseInt(request.getParameter("quantity" + productId));
+                    int Id =Integer.parseInt(productId);
+                    Products prod = ProductsTable.findProductByMovieId(Id);
+                    Shoppingcart cart = new Shoppingcart();
+                    ShoppingcartPK cartPK = new ShoppingcartPK(cartId, Id);
+                    cart.setShoppingcartPK(cartPK);
+                    cart.setQuantity(quantity);
+                    cart.setProducts(prod);
+                    ShoppingTable.insertOrder(cart);
             }        
         }
         request.getRequestDispatcher("show_cforder.jsp").forward(request, response);
